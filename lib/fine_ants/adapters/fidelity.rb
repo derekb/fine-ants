@@ -24,6 +24,11 @@ module FineAnts
       end
 
       private
+      def verify_login!
+        find ".account-selector-wrapper"
+      rescue Capybara::ElementNotFound
+        raise FineAnts::LoginFailedError.new
+      end
     end
   end
 end
